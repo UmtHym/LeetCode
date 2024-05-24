@@ -25,15 +25,37 @@
 // nums contains distinct values sorted in ascending order.
 // -104 <= target <= 104
 
- //O(nlogn)
- var searchInsert = function(nums, target) {
-    if (nums.includes(target)){
-    return nums.indexOf(target)
+//O(logn)
+var searchInsert = function(nums, target) {
+    min = 0;
+    max = nums.length -1;
+    let guess;
+
+    while(min <= max){
+        guess = Math.floor((min + max) / 2)
+        if(nums[guess] === target){
+            return guess;
+
+        } else {
+            if (nums[guess] < target) {
+                min = guess + 1;
+            } else {
+                max = guess - 1;
+            }
+        }
     }
-
-    let newNums = nums.slice(0);
-    newNums.push(target);
-    newNums.sort((a,b)=> a - b);
-
-    return newNums.indexOf(target)   
+    return min
 }
+
+//O(nlogn)
+//  var searchInsert = function(nums, target) {
+//     if (nums.includes(target)){
+//     return nums.indexOf(target)
+//     }
+
+//     let newNums = nums.slice(0);
+//     newNums.push(target);
+//     newNums.sort((a,b)=> a - b);
+
+//     return newNums.indexOf(target)   
+// }
