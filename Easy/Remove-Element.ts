@@ -1,4 +1,3 @@
-
 // Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
 
 // Consider the number of elements in nums which are not equal to val be k, to get accepted, you need to do the following things:
@@ -7,13 +6,12 @@
 // Return k.
 
 function removeElement(nums: number[], val: number): number {
-    let k = 0
-    nums.forEach((el: number) => {
-        if(el !== val){
-            nums[k] = el
-            k++
-        }        
-    })
-    return k
-};
-
+  let k = 0;
+  nums.forEach((el: number) => {
+    if (el !== val) {
+      nums[k] = el;
+      k++;
+    }
+  });
+  return k;
+}
