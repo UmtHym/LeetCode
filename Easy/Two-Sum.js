@@ -4,8 +4,6 @@
 
 // You can return the answer in any order.
 
- 
-
 // Example 1:
 
 // Input: nums = [2,7,11,15], target = 9
@@ -19,7 +17,6 @@
 
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
- 
 
 // Constraints:
 
@@ -27,20 +24,35 @@
 // -109 <= nums[i] <= 109
 // -109 <= target <= 109
 // Only one valid answer exists.
- 
 
 // Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
-// O(n2) time complexity
+// O(n) time complexity
 
-var twoSum = function(nums, target) {
-    let indicesOfNums ={}
-    for(let i=0; i < nums.length; i++){
-        let complement = target - nums[i]
-        if(indicesOfNums.hasOwnProperty(complement)){
-           return [indicesOfNums[complement], i]
-        }
-    indicesOfNums[nums[i]] = i
+var twoSum = function (nums, target) {
+  let indicesOfNums = {};
+  for (let i = 0; i < nums.length; i++) {
+    let complement = target - nums[i];
+    if (indicesOfNums.hasOwnProperty(complement)) {
+      return [indicesOfNums[complement], i];
     }
+    indicesOfNums[nums[i]] = i;
+  }
 };
 
+// O(n) time complexity better syntax
+var twoSum = function (nums, target) {
+  let result = [];
+  let hashMap = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    let diff = target - nums[i];
+
+    if (diff in hash) {
+      result.push(hashMap[diff], i);
+    } else {
+      hashMap[nums[i]] = i;
+    }
+  }
+  return result;
+};
